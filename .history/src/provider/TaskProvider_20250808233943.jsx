@@ -1,0 +1,11 @@
+import { TaskContext } from "../context/TaskContext";
+import { useState } from "react";
+const getTask = () => {};
+export const TaskProvider = ({ children }) => {
+  const [tasks, setTasks] = useState(() => {tasks ? :{id:1, title:"Anna", isDone:false}});
+  return (
+    <TaskContext.Provider value={{ tasks, setTasks }}>
+      {children}
+    </TaskContext.Provider>
+  );
+};

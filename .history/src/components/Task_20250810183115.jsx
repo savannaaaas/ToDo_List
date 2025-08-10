@@ -1,0 +1,38 @@
+import { Checkbox } from "@mui/material";
+import TableCell from "@mui/material/TableCell";
+import TableRow from "@mui/material/TableRow";
+import { useContext } from "react";
+import { TaskContext } from "../context/TaskContext";
+import ClearIcon from "@mui/icons-material/Clear";
+import { Button } from "@mui/material";
+export const Task = ({ task }) => {
+  const { tasks, setTasks } = useContext(TaskContext);
+  const handleChangeChecked = (id) => {
+    setTasks((prevTask) =>
+      prevTask.map((task) =>
+        task.id === id ? { ...task, isDone: !task.isDone } : task
+      )
+    );
+  };
+  return (
+    <TableRow
+      key={task.id}
+      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+    >
+      <TableCell align="center">
+        <Checkbox
+          checked={task.isDone ?? false}
+          onChange={() => handleChangeChecked(task.id)}
+        />
+        <Button startIcon={<ClearIcon />} />
+      </TableCell>
+      <TableCell
+        align="center"
+        sx={{ textDecoration: task.isDone ? "line-through" : "none" }}
+      >
+        {task.title}
+      </TableCell>
+      <TableCell align="center">{task.id}</TableCell>
+    </TableRow>
+  );
+};
