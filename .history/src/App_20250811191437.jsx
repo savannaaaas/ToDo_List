@@ -5,6 +5,7 @@ import { FilterTask } from "./components/FiterTasks";
 import "./index.css";
 
 function App() {
+  const [filterTask, setFilterTask] = useState("all");
   return (
     <div className="toDo-list">
       <Header />

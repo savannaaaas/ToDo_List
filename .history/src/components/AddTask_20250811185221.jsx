@@ -3,15 +3,11 @@ import { useForm } from "react-hook-form";
 import { schema } from "../schema/shema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, TextField } from "@mui/material";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { TaskContext } from "../context/TaskContext";
-import Snackbar from "@mui/material/Snackbar";
-import Alert from "@mui/material/Alert";
 
 export const AddTask = () => {
   const { tasks, setTasks } = useContext(TaskContext);
-
-  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -42,13 +38,7 @@ export const AddTask = () => {
 
     setTasks(updateTask);
 
-    setOpen(true);
-
     reset();
-  };
-
-  const handleClose = () => {
-    setOpen(false);
   };
 
   return (
@@ -90,16 +80,6 @@ export const AddTask = () => {
           );
         }}
       />
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert
-          onClose={handleClose}
-          severity="success"
-          variant="filled"
-          sx={{ width: "100%" }}
-        >
-          Task added!
-        </Alert>
-      </Snackbar>
       <Button
         variant="contained"
         sx={{ backgroundColor: "#ffbeec" }}

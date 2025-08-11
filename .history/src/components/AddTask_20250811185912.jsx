@@ -97,7 +97,7 @@ export const AddTask = () => {
           variant="filled"
           sx={{ width: "100%" }}
         >
-          Task added!
+          This is a success Alert inside a Snackbar!
         </Alert>
       </Snackbar>
       <Button

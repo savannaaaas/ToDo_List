@@ -20,16 +20,18 @@ export const ShowTasks = () => {
 
   const filterTasks = useMemo(
     () =>
-      tasks.filter((task) => {
-        if (filterTask === "active") {
-          return !task.isDone;
-        }
-        if (filterTask === "completed") {
-          return task.isDone;
-        }
-        return task;
-      }),
-    [tasks, filterTask]
+      tasks
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+        .filter((task) => {
+          if (filterTask === "active") {
+            return !task.isDone;
+          }
+          if (filterTask === "completed") {
+            return task.isDone;
+          }
+          return task;
+        }),
+    [tasks]
   );
 
   const uncompletedTask = tasks.filter((task) => !task.isDone).length;
@@ -47,15 +49,9 @@ export const ShowTasks = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filterTasks
-              .slice()
-              .sort(
-                (a, b) =>
-                  new Date(b.date).getTime() - new Date(a.date).getTime()
-              )
-              .map((task) => {
-                return <Task task={task} key={task.id} />;
-              })}
+            {filterTasks.map((task) => {
+              return <Task task={task} key={task.id} />;
+            })}
           </TableBody>
         </Table>
       </TableContainer>

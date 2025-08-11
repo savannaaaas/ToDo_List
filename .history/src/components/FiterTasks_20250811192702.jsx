@@ -11,7 +11,7 @@ export const FilterTask = React.memo(() => {
       <Button
         variant="contained"
         sx={{
-          backgroundColor: filterTask === "all" ? "#f495d7ff" : "pink",
+          backgroundColor: filterTask === "all" ? "#f495d7ff" : "black",
           color: "white",
         }}
         onClick={() => setFilterTask("all")}
@@ -21,7 +21,7 @@ export const FilterTask = React.memo(() => {
       <Button
         variant="contained"
         sx={{
-          backgroundColor: filterTask === "active" ? "#f495d7ff" : "pink",
+          backgroundColor: filterTask === "active" ? "#f495d7ff" : "black",
           color: "white",
         }}
         onClick={() => setFilterTask("active")}
@@ -31,7 +31,7 @@ export const FilterTask = React.memo(() => {
       <Button
         variant="contained"
         sx={{
-          backgroundColor: filterTask === "completed" ? "#f495d7ff" : "pink",
+          backgroundColor: filterTask === "completed" ? "#f495d7ff" : "black",
           color: "white",
         }}
         onClick={() => setFilterTask("completed")}

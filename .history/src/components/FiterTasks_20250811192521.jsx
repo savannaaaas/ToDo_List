@@ -9,19 +9,16 @@ export const FilterTask = React.memo(() => {
   return (
     <div style={{ display: "flex", flexDirection: "row", gap: "30px" }}>
       <Button
-        variant="contained"
-        sx={{
-          backgroundColor: filterTask === "all" ? "#f495d7ff" : "pink",
-          color: "white",
-        }}
+        variant={filterTask === "all" ? "contained" : "outlined"}
+        sx={{ backgroundColor: "#f495d7ff", color: "white" }}
         onClick={() => setFilterTask("all")}
       >
         All
       </Button>
       <Button
-        variant="contained"
+        variant={filterTask === "all" ? "contained" : "outlined"}
         sx={{
-          backgroundColor: filterTask === "active" ? "#f495d7ff" : "pink",
+          backgroundColor: filterTask === "completed" ? "#f495d7ff" : "none",
           color: "white",
         }}
         onClick={() => setFilterTask("active")}
@@ -29,9 +26,9 @@ export const FilterTask = React.memo(() => {
         Active
       </Button>
       <Button
-        variant="contained"
+        variant={filterTask === "all" ? "contained" : "outlined"}
         sx={{
-          backgroundColor: filterTask === "completed" ? "#f495d7ff" : "pink",
+          backgroundColor: filterTask === "completed" ? "#f495d7ff" : "none",
           color: "white",
         }}
         onClick={() => setFilterTask("completed")}

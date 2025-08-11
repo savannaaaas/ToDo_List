@@ -29,7 +29,7 @@ export const ShowTasks = () => {
         }
         return task;
       }),
-    [tasks, filterTask]
+    [tasks]
   );
 
   const uncompletedTask = tasks.filter((task) => !task.isDone).length;

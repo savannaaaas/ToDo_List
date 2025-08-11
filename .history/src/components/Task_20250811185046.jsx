@@ -24,11 +24,9 @@ export const Task = React.memo(({ task }) => {
       )
     );
   };
-
   const handleDeleteTask = (id) => {
     setTasks((prevTask) => prevTask.filter((task) => task.id !== id));
   };
-
   const handleNewTitleTask = (id, newTitle) => {
     setTasks((prevTask) =>
       prevTask.map((task) =>

@@ -8,12 +8,8 @@ export const TaskProvider = ({ children }) => {
       : [{ id: 1, title: "Anna", isDone: false }];
   });
 
-  const [filterTask, setFilterTask] = useState("all");
-
   return (
-    <TaskContext.Provider
-      value={{ tasks, setTasks, filterTask, setFilterTask }}
-    >
+    <TaskContext.Provider value={{ tasks, setTasks }}>
       {children}
     </TaskContext.Provider>
   );

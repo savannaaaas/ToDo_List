@@ -1,5 +1,5 @@
 import { TaskContext } from "../context/TaskContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 export const TaskProvider = ({ children }) => {
   const [tasks, setTasks] = useState(() => {
     const saved = localStorage.getItem("tasks");
@@ -8,8 +8,11 @@ export const TaskProvider = ({ children }) => {
       : [{ id: 1, title: "Anna", isDone: false }];
   });
 
-  const [filterTask, setFilterTask] = useState("all");
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
+  const [filterTask, setFilterTask] = useState("all");
   return (
     <TaskContext.Provider
       value={{ tasks, setTasks, filterTask, setFilterTask }}

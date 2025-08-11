@@ -12,7 +12,7 @@ import { Button, Checkbox, Typography } from "@mui/material";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 export const ShowTasks = () => {
-  const { tasks, setTasks, filterTask } = useContext(TaskContext);
+  const { tasks, setTasks } = useContext(TaskContext);
 
   const handleDeleteAllTask = () => {
     setTasks((prevTask) => prevTask.filter((task) => !task.isDone));
@@ -29,7 +29,7 @@ export const ShowTasks = () => {
         }
         return task;
       }),
-    [tasks, filterTask]
+    [tasks]
   );
 
   const uncompletedTask = tasks.filter((task) => !task.isDone).length;

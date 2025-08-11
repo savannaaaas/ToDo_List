@@ -29,7 +29,7 @@ export const ShowTasks = () => {
         }
         return task;
       }),
-    [tasks, filterTask]
+    [tasks]
   );
 
   const uncompletedTask = tasks.filter((task) => !task.isDone).length;
@@ -47,15 +47,9 @@ export const ShowTasks = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filterTasks
-              .slice()
-              .sort(
-                (a, b) =>
-                  new Date(b.date).getTime() - new Date(a.date).getTime()
-              )
-              .map((task) => {
-                return <Task task={task} key={task.id} />;
-              })}
+            {filterTasks.map((task) => {
+              return <Task task={task} key={task.id} />;
+            })}
           </TableBody>
         </Table>
       </TableContainer>

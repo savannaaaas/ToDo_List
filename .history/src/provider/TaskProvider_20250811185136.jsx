@@ -9,7 +9,6 @@ export const TaskProvider = ({ children }) => {
   });
 
   const [filterTask, setFilterTask] = useState("all");
-
   return (
     <TaskContext.Provider
       value={{ tasks, setTasks, filterTask, setFilterTask }}
