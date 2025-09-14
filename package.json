@@ -20,6 +20,8 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.62.0",
+    "react-redux": "^9.2.0",
+    "redux": "^5.0.1",
     "resolver": "^0.1.11",
     "yup": "^1.7.0"
   },
