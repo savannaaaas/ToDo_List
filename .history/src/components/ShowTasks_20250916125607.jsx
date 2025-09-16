@@ -21,6 +21,7 @@ export const ShowTasks = () => {
     dispatch(deleteTasks());
   };
 
+  //кэшируем результат выполнения, так как здесь тяжеловесные операции
   const filterTasks = useMemo(
     () =>
       tasks.filter((task) => {
@@ -40,17 +41,12 @@ export const ShowTasks = () => {
     () => tasks.filter((task) => !task.isDone).length,
     [tasks]
   );
-
-  const soretedAndFilterTasks = useMemo(
-    () =>
-      filterTasks
-        .slice()
-        .sort(
-          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-        ),
-    [filterTasks]
-  );
-
+ const soretedAndFilterTasks = useMemo(()=>filterTasks
+              .slice()
+              .sort(
+                (a, b) =>
+                  new Date(b.date).getTime() - new Date(a.date).getTime()
+              ))
   return (
     <div>
       <TableContainer component={Paper}>
@@ -64,9 +60,10 @@ export const ShowTasks = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {soretedAndFilterTasks.map((task) => {
-              return <Task task={task} key={task.id} />;
-            })}
+            {
+              .map((task) => {
+                return <Task task={task} key={task.id} />;
+              })}
           </TableBody>
         </Table>
       </TableContainer>

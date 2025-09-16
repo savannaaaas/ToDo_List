@@ -41,16 +41,6 @@ export const ShowTasks = () => {
     [tasks]
   );
 
-  const soretedAndFilterTasks = useMemo(
-    () =>
-      filterTasks
-        .slice()
-        .sort(
-          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-        ),
-    [filterTasks]
-  );
-
   return (
     <div>
       <TableContainer component={Paper}>
@@ -64,9 +54,15 @@ export const ShowTasks = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {soretedAndFilterTasks.map((task) => {
-              return <Task task={task} key={task.id} />;
-            })}
+            {filterTasks
+              .slice()
+              .sort(
+                (a, b) =>
+                  new Date(b.date).getTime() - new Date(a.date).getTime()
+              )
+              .map((task) => {
+                return <Task task={task} key={task.id} />;
+              })}
           </TableBody>
         </Table>
       </TableContainer>

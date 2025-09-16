@@ -21,6 +21,7 @@ export const ShowTasks = () => {
     dispatch(deleteTasks());
   };
 
+  //кэшируем результат выполнения, так как здесь тяжеловесные операции
   const filterTasks = useMemo(
     () =>
       tasks.filter((task) => {

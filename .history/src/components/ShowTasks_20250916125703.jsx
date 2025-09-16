@@ -21,6 +21,7 @@ export const ShowTasks = () => {
     dispatch(deleteTasks());
   };
 
+  //кэшируем результат выполнения, так как здесь тяжеловесные операции
   const filterTasks = useMemo(
     () =>
       tasks.filter((task) => {
@@ -40,7 +41,6 @@ export const ShowTasks = () => {
     () => tasks.filter((task) => !task.isDone).length,
     [tasks]
   );
-
   const soretedAndFilterTasks = useMemo(
     () =>
       filterTasks
@@ -50,7 +50,6 @@ export const ShowTasks = () => {
         ),
     [filterTasks]
   );
-
   return (
     <div>
       <TableContainer component={Paper}>
